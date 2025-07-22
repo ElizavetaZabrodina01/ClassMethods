@@ -26,12 +26,7 @@ counter.displayCount();
 
 class EmailValidator {
     static isValid(email) {
-        if (email.includes('@')) {
-            return true
-        }
-        else {
-            return false
-        }
+        return email.includes('@');
     }
 }
 
@@ -44,26 +39,24 @@ console.log(EmailValidator.isValid('ajdiiiwdj'));
 // Сделай публичный метод, который возвращает результат этого расчета, и вызывай его через созданный экземпляр класса.
 
 class Order {
-    #total = 0;
-
     constructor(...rest) {
         this.rest = [...rest];
     }
 
-    #calculateTotal() {
+    #calculateTotal(total = 0) {
         this.rest.forEach(element => {
-            this.#total = this.#total + element;
+            total = total + element;
         });
-        return this.#total;
+        return total;
     }
 
     displayTotal() {
-        this.#calculateTotal();
-        return this.#total;
+        return this.#calculateTotal();
     }
 }
 
 const order = new Order(1,2,3,4,5);
 
 console.log(order.displayTotal());
-
+console.log(order.displayTotal());
+console.log(order.displayTotal());
